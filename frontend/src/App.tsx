@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import Card from "./components/Card";
+import CardList from "./components/CardList";
 
 function App() {
   return (
     <Box>
-      <Card />
+      <CardList />
     </Box>
   );
 }
