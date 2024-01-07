@@ -1,23 +1,24 @@
 import { SxProps } from "@mui/material";
 
 export const cardSX: SxProps = {
-  boxShadow: "1px 1px 3px grey",
-  borderRadius: "10px",
+  backgroundColor: "#e3e3e3",
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "column",
-  maxWidth: "350px",
-  textAlign: "center",
-  gap: "3rem",
-  padding: "1rem 0",
-  border: "1px solid black",
+  justifyContent: "flex-end",
+  borderRadius: "5px",
 };
 
-export const cardImageSX: SxProps = {
-  width: "150px",
-  height: "150px",
-  borderRadius: "999px",
-  border: "1px solid black",
-  boxShadow: "2px 2px 5px grey",
+export const cardFirstListItemSX: SxProps = {
+  fontSize: 12,
+  marginRight: "auto",
+};
+
+export const cardListItemSX: SxProps = {
+  fontSize: 12,
+  marginRight: "1rem",
+};
+
+export const cardCurrencySX: SxProps = {
+  fontSize: 12,
+  fontWeight: "bold",
+  marginRight: "1rem",
 };

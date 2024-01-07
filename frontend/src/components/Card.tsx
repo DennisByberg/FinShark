@@ -1,26 +1,39 @@
-import { Box, Typography } from "@mui/material";
-import { cardImageSX, cardSX } from "./styles/CardSX";
+import { ListItem, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+
+import {
+  cardFirstListItemSX,
+  cardListItemSX,
+  cardSX,
+  cardCurrencySX,
+} from "./styles/CardSX";
 import AddPortfolio from "./Portfolio/AddPortfolio";
 import { ICardProps } from "../interfaces/interfaceProps";
 
 function Card({ searchResult, onPortfolioCreate }: ICardProps) {
   return (
-    <Box sx={cardSX}>
-      <Box sx={cardImageSX} alt="company logo" component={"img"}></Box>
-      <Box>
-        <Typography sx={{ fontSize: "1.2rem" }} variant="h2">
-          {searchResult.name} ({searchResult.symbol})
-        </Typography>
-        <Typography variant="body1">${searchResult.currency}</Typography>
-      </Box>
-      <Typography variant="body1">
+    <ListItem sx={cardSX}>
+      <Typography
+        component={Link}
+        to={`/company/${searchResult.symbol}`}
+        sx={cardFirstListItemSX}
+      >
+        {searchResult.name} ({searchResult.symbol})
+      </Typography>
+
+      <Typography sx={cardListItemSX} variant="body1">
         {searchResult.exchangeShortName} - {searchResult.stockExchange}
       </Typography>
+
+      <Typography sx={cardCurrencySX} variant="body1">
+        ${searchResult.currency}
+      </Typography>
+
       <AddPortfolio
         onPortfolioCreate={onPortfolioCreate}
         symbol={searchResult.symbol}
       />
-    </Box>
+    </ListItem>
   );
 }
 
