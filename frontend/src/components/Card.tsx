@@ -1,23 +1,25 @@
 import { Box, Typography } from "@mui/material";
-import { cardImageSX, cardSX } from "./styles/CardSx";
+import { cardImageSX, cardSX } from "./styles/CardSX";
+import AddPortfolio from "./Portfolio/AddPortfolio";
+import { ICardProps } from "../interfaces/interfaceProps";
 
-function Card({ companyName, ticker, price }: ICardProps) {
+function Card({ searchResult, onPortfolioCreate }: ICardProps) {
   return (
     <Box sx={cardSX}>
-      <Box
-        sx={cardImageSX}
-        component={"img"}
-        src="https://media.istockphoto.com/id/1251493047/vector/apple-flat-style-vector-icon.jpg?s=612x612&w=0&k=20&c=90r0D6OEq1wNRnfHHftEWibKBjdGe9OgMl6HEpi4d8Q="
-      ></Box>
+      <Box sx={cardImageSX} alt="company logo" component={"img"}></Box>
       <Box>
-        <Typography sx={{ fontSize: "1.5rem" }} variant="h2">
-          {companyName} ({ticker})
+        <Typography sx={{ fontSize: "1.2rem" }} variant="h2">
+          {searchResult.name} ({searchResult.symbol})
         </Typography>
-        <Typography variant="body1">${price}</Typography>
+        <Typography variant="body1">${searchResult.currency}</Typography>
       </Box>
       <Typography variant="body1">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, neque.
+        {searchResult.exchangeShortName} - {searchResult.stockExchange}
       </Typography>
+      <AddPortfolio
+        onPortfolioCreate={onPortfolioCreate}
+        symbol={searchResult.symbol}
+      />
     </Box>
   );
 }
