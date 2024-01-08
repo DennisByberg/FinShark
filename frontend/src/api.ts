@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CompanySearch } from "./interfaces/interfaces";
+import { CompanyProfile, CompanySearch } from "./interfaces/interfaces";
 
 interface ISearchResponse {
   data: CompanySearch[];
@@ -21,3 +21,14 @@ export async function searchCompanies(query: string) {
     }
   }
 }
+
+export const getCompanyProfile = async (query: string) => {
+  try {
+    const data = await axios.get<CompanyProfile[]>(
+      `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=9550ccfcc44d66567d44739257dd8769`
+    );
+    return data;
+  } catch (error) {
+    console.log("error message from api");
+  }
+};
