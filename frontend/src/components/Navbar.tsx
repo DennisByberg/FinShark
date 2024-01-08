@@ -39,7 +39,15 @@ export default function DrawerAppBar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography
+        variant="h6"
+        component={Link}
+        to={"/"}
+        sx={{
+          color: "black",
+          textDecoration: "none",
+        }}
+      >
         Finshark
       </Typography>
       <Divider />
@@ -76,10 +84,25 @@ export default function DrawerAppBar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
+          <Box
+            component={"img"}
+            src={"/src/assets/finshark logo.png"}
+            width={40}
+            mr={1}
+            sx={{
+              display: { xs: "none", sm: "block" },
+            }}
+          />
           <Typography
             variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            component={Link}
+            to={"/"}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              color: "white",
+              textDecoration: "none",
+            }}
           >
             Finshark
           </Typography>
@@ -89,7 +112,12 @@ export default function DrawerAppBar(props: Props) {
                 component={Link}
                 to={`${item.link}`}
                 key={item.label}
-                sx={{ color: "#fff" }}
+                sx={{
+                  color: "#fff",
+                  ":hover": {
+                    textDecoration: "underline",
+                  },
+                }}
               >
                 {item.label}
               </Button>
