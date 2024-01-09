@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the dependency injection container
-// These services can be injected into controllers, Razor Pages, etc.
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -29,6 +28,8 @@ if (app.Environment.IsDevelopment())
 
 // Redirect all HTTP requests to HTTPS
 app.UseHttpsRedirection();
+
+app.MapControllers();
 
 // Start the web application
 app.Run();
